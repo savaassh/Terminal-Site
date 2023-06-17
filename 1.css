@@ -1,0 +1,122 @@
+body {
+  background-color: #282c34;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('dLYfYLBGDmmQ3DSWcfNk8Q-default.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.terminal {
+  background-color: black;
+  color: white;
+  font-family: monospace;
+  padding: 10px;
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  position: relative;
+  transition: height 0.3s ease-in-out;
+  animation: terminalAnimation 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+.output {
+  overflow-y: scroll;
+  height: 80%;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input span {
+  color: lime;
+  margin-right: 5px;
+  animation: blink-animation 1s infinite;
+}
+
+.input span.writing {
+  animation-play-state: paused;
+}
+
+.input input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: monospace;
+  width: 90%;
+  text-transform: capitalize; /* Bu satırı ekledik */
+}
+
+.input input:focus {
+  outline: none;
+}
+
+.output::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+html {
+  cursor: url('Arrow.cur'), auto;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.input input.writing {
+  animation-play-state: running;
+}
+
+.input input.erasing {
+  animation: blink-animation 1s infinite reverse;
+}
+
+.reset-button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.reset-button {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.reset-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Silinecek butonlar */
+button:not(.reset-button) {
+  display: none;
+}
